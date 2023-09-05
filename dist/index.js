@@ -8,10 +8,11 @@ export const SortOrder = {
 };
 export var Response;
 (function (Response) {
-    Response.Type = {
-        Empty: "Empty",
-        Object: "Object",
-        Array: "Array",
-        Error: "Error"
-    };
+    let Type;
+    (function (Type) {
+        Type["Empty"] = "Empty";
+        Type["Object"] = "Object";
+        Type["Array"] = "Array";
+        Type["Error"] = "Error";
+    })(Type = Response.Type || (Response.Type = {}));
 })(Response || (Response = {}));

@@ -48,12 +48,12 @@ export interface Response<T> extends DataTransferObject {
     result: T;
 }
 export declare namespace Response {
-    const Type: {
-        readonly Empty: "Empty";
-        readonly Object: "Object";
-        readonly Array: "Array";
-        readonly Error: "Error";
-    };
+    enum Type {
+        Empty = "Empty",
+        Object = "Object",
+        Array = "Array",
+        Error = "Error"
+    }
     interface Metadata {
         acceptedAt: Date;
         respondedAt: Date;
