@@ -1,34 +1,34 @@
-export type Creatable = {
+export interface Creatable {
     createdAt: Date
 }
 
-export type Deletable = {
+export interface Deletable {
     deletedAt?: Date
 }
 
-export type Modifiable = Creatable | {
+export interface Modifiable extends Creatable {
     lastModifiedAt?: Date
 }
 
-export type Id<V> = {
+export interface Id<V> {
     value: V
 }
 
-export type IntId = Id<number>
+export interface IntId extends Id<number> {}
 
-export type LongId = Id<bigint>
+export interface LongId extends Id<bigint> {}
 
-export type StringId = Id<string>
+export interface StringId extends Id<string> {}
 
-export type IdHolder<_Id extends Id<V>, V> = {
+export interface IdHolder<_Id extends Id<V>, V> {
     id: _Id
 }
 
-export type IntIdHolder<_Id extends Id<number>> = IdHolder<_Id, number>
+export interface IntIdHolder<_Id extends Id<number>> extends IdHolder<_Id, number> {}
 
-export type LongIdHolder<_Id extends Id<bigint>> = IdHolder<_Id, bigint>
+export interface LongIdHolder<_Id extends Id<bigint>> extends IdHolder<_Id, bigint> {}
 
-export type StringIdHolder<_Id extends Id<string>> = IdHolder<_Id, string>
+export interface StringIdHolder<_Id extends Id<string>> extends IdHolder<_Id, string> {}
 
 export const SortOrder = {
     ASC: "ASC",
@@ -40,18 +40,18 @@ export const SortOrder = {
 } as const
 
 // io
-export type DataTransferObject = {}
+export interface DataTransferObject {}
 
-export type EncryptedDataTransferObject = DataTransferObject | {
+export interface EncryptedDataTransferObject extends DataTransferObject {
     publicKey: string
     body: string
 }
 
-export type ErrorDataTransferObject = DataTransferObject | {
+export interface ErrorDataTransferObject extends DataTransferObject {
     httpStatusCode: number
 }
 
-export type Response<T> = DataTransferObject | {
+export interface Response<T> extends DataTransferObject {
     type: typeof Response.Type
     metadata: Response.Metadata
     result: T
@@ -65,21 +65,21 @@ export namespace Response {
         Error: "Error"
     } as const
 
-    export type Metadata = {
+    export interface Metadata {
         acceptedAt: Date
         respondedAt: Date
     }
 
-    export type Empty = Response<void>
+    export interface Empty extends Response<void> {}
 
-    export type Object<T> = Response<T>
+    export interface Object<T> extends Response<T> {}
 
-    export type Array<T> = Response<T[]>
+    export interface Array<T> extends Response<T[]> {}
 
-    export type Error = Response<string> | {
+    export interface Error extends Response<string> {
         className: string
         status: number
     }
 }
 
-export type ValueObject = DataTransferObject | {}
+export interface ValueObject extends DataTransferObject {}
