@@ -25,14 +25,14 @@ export interface LongIdHolder<_Id extends Id<bigint>> extends IdHolder<_Id, bigi
 }
 export interface StringIdHolder<_Id extends Id<string>> extends IdHolder<_Id, string> {
 }
-export declare const SortOrder: {
-    readonly ASC: "ASC";
-    readonly DESC: "DESC";
-    readonly ASC_NULLS_FIRST: "ASC_NULLS_FIRST";
-    readonly DESC_NULLS_FIRST: "DESC_NULLS_FIRST";
-    readonly ASC_NULLS_LAST: "ASC_NULLS_LAST";
-    readonly DESC_NULLS_LAST: "DESC_NULLS_LAST";
-};
+export declare enum SortOrder {
+    ASC = "ASC",
+    DESC = "DESC",
+    ASC_NULLS_FIRST = "ASC_NULLS_FIRST",
+    DESC_NULLS_FIRST = "DESC_NULLS_FIRST",
+    ASC_NULLS_LAST = "ASC_NULLS_LAST",
+    DESC_NULLS_LAST = "DESC_NULLS_LAST"
+}
 export interface DataTransferObject {
 }
 export interface EncryptedDataTransferObject extends DataTransferObject {

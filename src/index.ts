@@ -30,14 +30,14 @@ export interface LongIdHolder<_Id extends Id<bigint>> extends IdHolder<_Id, bigi
 
 export interface StringIdHolder<_Id extends Id<string>> extends IdHolder<_Id, string> {}
 
-export const SortOrder = {
-    ASC: "ASC",
-    DESC: "DESC",
-    ASC_NULLS_FIRST: "ASC_NULLS_FIRST",
-    DESC_NULLS_FIRST: "DESC_NULLS_FIRST",
-    ASC_NULLS_LAST: "ASC_NULLS_LAST",
-    DESC_NULLS_LAST: "DESC_NULLS_LAST"
-} as const
+export enum SortOrder {
+    ASC = "ASC",
+    DESC = "DESC",
+    ASC_NULLS_FIRST = "ASC_NULLS_FIRST",
+    DESC_NULLS_FIRST = "DESC_NULLS_FIRST",
+    ASC_NULLS_LAST = "ASC_NULLS_LAST",
+    DESC_NULLS_LAST = "DESC_NULLS_LAST"
+}
 
 // io
 export interface DataTransferObject {}

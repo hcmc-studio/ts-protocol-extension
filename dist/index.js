@@ -1,11 +1,12 @@
-export const SortOrder = {
-    ASC: "ASC",
-    DESC: "DESC",
-    ASC_NULLS_FIRST: "ASC_NULLS_FIRST",
-    DESC_NULLS_FIRST: "DESC_NULLS_FIRST",
-    ASC_NULLS_LAST: "ASC_NULLS_LAST",
-    DESC_NULLS_LAST: "DESC_NULLS_LAST"
-};
+export var SortOrder;
+(function (SortOrder) {
+    SortOrder["ASC"] = "ASC";
+    SortOrder["DESC"] = "DESC";
+    SortOrder["ASC_NULLS_FIRST"] = "ASC_NULLS_FIRST";
+    SortOrder["DESC_NULLS_FIRST"] = "DESC_NULLS_FIRST";
+    SortOrder["ASC_NULLS_LAST"] = "ASC_NULLS_LAST";
+    SortOrder["DESC_NULLS_LAST"] = "DESC_NULLS_LAST";
+})(SortOrder || (SortOrder = {}));
 export var Response;
 (function (Response) {
     let Type;
