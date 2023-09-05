@@ -43,7 +43,7 @@ export interface ErrorDataTransferObject extends DataTransferObject {
     httpStatusCode: number;
 }
 export interface Response<T> extends DataTransferObject {
-    type: typeof Response.Type;
+    type: Response.Type;
     metadata: Response.Metadata;
     result: T;
 }
