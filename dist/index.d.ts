@@ -68,6 +68,11 @@ export declare namespace Response {
         className: string;
         status: number;
     }
+    function isResponse<T>(o: any): o is Response<T>;
+    function isEmpty(o: any): o is Response.Empty;
+    function isObject<T>(o: any, predicate: (element: any) => boolean): o is Response.Object<T>;
+    function isArray<T>(o: any, predicate: (element: any) => boolean): o is Response.Array<T>;
+    function isError(o: any): o is Response.Error;
 }
 export interface ValueObject extends DataTransferObject {
 }

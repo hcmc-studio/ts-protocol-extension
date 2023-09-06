@@ -80,6 +80,28 @@ export namespace Response {
         className: string
         status: number
     }
+
+    export function isResponse<T>(o: any): o is Response<T> {
+        return 'type' in o && 'metadata' in o && 'result' in o
+    }
+
+    export function isEmpty(o: any): o is Response.Empty {
+        return isResponse(o) && o.result === undefined
+    }
+
+    export function isObject<T>(o: any, predicate: (element: any) => boolean): o is Response.Object<T> {
+        return isResponse(o) && predicate(o.result)
+    }
+
+    export function isArray<T>(o: any, predicate: (element: any) => boolean): o is Response.Array<T> {
+        return isResponse(o) && Array.isArray(o.result) && predicate(o.result[0])
+    }
+
+    export function isError(o: any): o is Response.Error {
+        return isResponse(o) && typeof o.result === 'string' &&
+            'className' in o && typeof o.className === 'string' &&
+            'status' in o && typeof o.status === 'number'
+    }
 }
 
 export interface ValueObject extends DataTransferObject {}
