@@ -33,6 +33,8 @@ export declare enum SortOrder {
     ASC_NULLS_LAST = "ASC_NULLS_LAST",
     DESC_NULLS_LAST = "DESC_NULLS_LAST"
 }
+export declare namespace SortOrder {
+}
 export interface DataTransferObject {
 }
 export interface EncryptedDataTransferObject extends DataTransferObject {

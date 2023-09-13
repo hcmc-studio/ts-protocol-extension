@@ -39,6 +39,17 @@ export enum SortOrder {
     DESC_NULLS_LAST = "DESC_NULLS_LAST"
 }
 
+export namespace SortOrder {
+    const names: Record<SortOrder, string> = {
+        ASC: '오름차순',
+        DESC: '내림차순',
+        ASC_NULLS_FIRST: '오름차순, 값이 존재하지 않을 때 우선 표시',
+        DESC_NULLS_FIRST: '내림차순, 값이 존재하지 않을 때 우선 표시',
+        ASC_NULLS_LAST: '오름차순, 값이 존재하지 않을 때 마지막 표시',
+        DESC_NULLS_LAST: '내림차순, 값이 존재하지 않을 때 마지막 표시'
+    }
+}
+
 // io
 export interface DataTransferObject {}
 
