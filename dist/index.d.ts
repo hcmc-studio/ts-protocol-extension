@@ -34,6 +34,7 @@ export declare enum SortOrder {
     DESC_NULLS_LAST = "DESC_NULLS_LAST"
 }
 export declare namespace SortOrder {
+    const names: Record<SortOrder, string>;
 }
 export interface DataTransferObject {
 }

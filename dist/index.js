@@ -8,7 +8,7 @@ export var SortOrder;
     SortOrder["DESC_NULLS_LAST"] = "DESC_NULLS_LAST";
 })(SortOrder || (SortOrder = {}));
 (function (SortOrder) {
-    const names = {
+    SortOrder.names = {
         ASC: '오름차순',
         DESC: '내림차순',
         ASC_NULLS_FIRST: '오름차순, 값이 존재하지 않을 때 우선 표시',
