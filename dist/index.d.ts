@@ -45,6 +45,14 @@ export interface EncryptedDataTransferObject extends DataTransferObject {
 export interface ErrorDataTransferObject extends DataTransferObject {
     httpStatusCode: number;
 }
+export interface ListOption<Filter extends ListOptionFilter, Order extends ListOptionOrder> extends DataTransferObject {
+    filter: Partial<Filter>;
+    order: Partial<Order>;
+}
+export interface ListOptionFilter extends DataTransferObject {
+}
+export interface ListOptionOrder extends DataTransferObject {
+}
 export interface Response<T> extends DataTransferObject {
     type: Response.Type;
     metadata: Response.Metadata;
