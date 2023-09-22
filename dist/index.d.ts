@@ -40,12 +40,12 @@ export type BitMaskFlag = {
     value: number;
     name: string;
 };
-export type BitMaskFlags<T extends BitMaskFlag> = Record<string, T>;
+export type BitMaskFlags<T extends BitMaskFlag = BitMaskFlag> = Record<string, T>;
 export type EnumValue = {
     ordinal: number;
     name: string;
 };
-export type Enum<T extends EnumValue> = Record<string, T>;
+export type Enum<T extends EnumValue = EnumValue> = Record<string, T>;
 export interface DataTransferObject {
 }
 export interface EncryptedDataTransferObject extends DataTransferObject {
