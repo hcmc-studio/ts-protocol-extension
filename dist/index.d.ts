@@ -51,6 +51,54 @@ export interface ListOption<Filter extends ListOptionFilter, Order extends ListO
 }
 export interface ListOptionFilter extends DataTransferObject {
 }
+export declare namespace ListOptionFilter {
+    interface Element {
+    }
+    interface PrimitiveElement<T> extends Element {
+        eq?: T;
+        neq?: T;
+        less?: T;
+        lessEq?: T;
+        greater?: T;
+        greaterEq?: T;
+        inList?: T[];
+        notInList?: T[];
+    }
+    interface NumericElement<T> extends PrimitiveElement<T> {
+    }
+    interface CharElement extends PrimitiveElement<string> {
+    }
+    interface BooleanElement extends Element {
+        eq?: boolean;
+    }
+    interface StringElement extends PrimitiveElement<string> {
+        eq?: string;
+        neq?: string;
+        less?: string;
+        lessEq?: string;
+        greater?: string;
+        greaterEq?: string;
+        like?: string;
+        notLike?: string;
+        inList?: string[];
+        notInList?: string[];
+    }
+    interface DateElement extends PrimitiveElement<string> {
+    }
+    interface BitMaskElement extends Element {
+        eq?: number;
+        neq?: number;
+        includeAll?: number;
+        includeAny?: number;
+        excludeAll?: number;
+    }
+    interface EnumElement<T> extends Element {
+        eq?: T;
+        neq?: T;
+        inList?: T[];
+        notInList?: T[];
+    }
+}
 export interface ListOptionOrder extends DataTransferObject {
 }
 export interface Response<T> extends DataTransferObject {
