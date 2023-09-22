@@ -40,7 +40,7 @@ export type BitMaskFlag = {
     value: number;
     name: string;
 };
-export type BitMask = Record<string, BitMaskFlag>;
+export type BitMaskFlags = Record<string, BitMaskFlag>;
 export interface DataTransferObject {
 }
 export interface EncryptedDataTransferObject extends DataTransferObject {

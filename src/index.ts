@@ -55,7 +55,7 @@ export type BitMaskFlag = {
     name: string
 }
 
-export type BitMask = Record<string, BitMaskFlag>
+export type BitMaskFlags = Record<string, BitMaskFlag>
 
 // io
 export interface DataTransferObject {}
