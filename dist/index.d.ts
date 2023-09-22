@@ -36,6 +36,11 @@ export declare enum SortOrder {
 export declare namespace SortOrder {
     const names: Record<SortOrder, string>;
 }
+export type BitMaskFlag = {
+    value: number;
+    name: string;
+};
+export type BitMask = Record<string, BitMaskFlag>;
 export interface DataTransferObject {
 }
 export interface EncryptedDataTransferObject extends DataTransferObject {

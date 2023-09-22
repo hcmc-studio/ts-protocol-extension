@@ -50,6 +50,13 @@ export namespace SortOrder {
     }
 }
 
+export type BitMaskFlag = {
+    value: number
+    name: string
+}
+
+export type BitMask = Record<string, BitMaskFlag>
+
 // io
 export interface DataTransferObject {}
 
