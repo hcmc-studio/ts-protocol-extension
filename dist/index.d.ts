@@ -40,7 +40,12 @@ export type BitMaskFlag = {
     value: number;
     name: string;
 };
-export type BitMaskFlags = Record<string, BitMaskFlag>;
+export type BitMaskFlags<T extends BitMaskFlag> = Record<string, T>;
+export type EnumValue = {
+    ordinal: number;
+    name: string;
+};
+export type Enum<T extends EnumValue> = Record<string, T>;
 export interface DataTransferObject {
 }
 export interface EncryptedDataTransferObject extends DataTransferObject {
@@ -69,7 +74,9 @@ export declare namespace ListOptionFilter {
         inList?: T[];
         notInList?: T[];
     }
-    interface NumericElement<T> extends PrimitiveElement<T> {
+    interface NumberElement extends PrimitiveElement<number> {
+    }
+    interface BigintElement extends PrimitiveElement<bigint> {
     }
     interface CharElement extends PrimitiveElement<string> {
     }
@@ -97,11 +104,11 @@ export declare namespace ListOptionFilter {
         includeAny?: number;
         excludeAll?: number;
     }
-    interface EnumElement<T> extends Element {
-        eq?: T;
-        neq?: T;
-        inList?: T[];
-        notInList?: T[];
+    interface EnumElement extends Element {
+        eq?: string;
+        neq?: string;
+        inList?: string[];
+        notInList?: string[];
     }
 }
 export interface ListOptionOrder extends DataTransferObject {

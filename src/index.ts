@@ -55,7 +55,14 @@ export type BitMaskFlag = {
     name: string
 }
 
-export type BitMaskFlags = Record<string, BitMaskFlag>
+export type BitMaskFlags<T extends BitMaskFlag> = Record<string, T>
+
+export type EnumValue = {
+    ordinal: number
+    name: string
+}
+
+export type Enum<T extends EnumValue> = Record<string, T>
 
 // io
 export interface DataTransferObject {}
@@ -90,7 +97,9 @@ export namespace ListOptionFilter {
         notInList?: T[]
     }
 
-    export interface NumericElement<T> extends PrimitiveElement<T> {}
+    export interface NumberElement extends PrimitiveElement<number> {}
+
+    export interface BigintElement extends PrimitiveElement<bigint> {}
 
     export interface CharElement extends PrimitiveElement<string> {}
 
@@ -121,11 +130,11 @@ export namespace ListOptionFilter {
         excludeAll?: number
     }
 
-    export interface EnumElement<T> extends Element {
-        eq?: T
-        neq?: T
-        inList?: T[]
-        notInList?: T[]
+    export interface EnumElement extends Element {
+        eq?: string
+        neq?: string
+        inList?: string[]
+        notInList?: string[]
     }
 }
 
