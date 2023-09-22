@@ -46,7 +46,7 @@ export type EnumValue<E> = {
     name: string;
     entry: E;
 };
-export type Enum<E, T extends EnumValue<E> = EnumValue<E>> = Record<string, T>;
+export type Enum<E extends string | number, T extends EnumValue<E> = EnumValue<E>> = Record<E, T>;
 export interface DataTransferObject {
 }
 export interface EncryptedDataTransferObject extends DataTransferObject {

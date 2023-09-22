@@ -63,7 +63,7 @@ export type EnumValue<E> = {
     entry: E
 }
 
-export type Enum<E, T extends EnumValue<E> = EnumValue<E>> = Record<string, T>
+export type Enum<E extends string | number, T extends EnumValue<E> = EnumValue<E>> = Record<E, T>
 
 // io
 export interface DataTransferObject {}
