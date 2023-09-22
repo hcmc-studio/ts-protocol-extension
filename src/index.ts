@@ -57,12 +57,13 @@ export type BitMaskFlag = {
 
 export type BitMaskFlags<T extends BitMaskFlag = BitMaskFlag> = Record<string, T>
 
-export type EnumValue = {
+export type EnumValue<E> = {
     ordinal: number
     name: string
+    entry: E
 }
 
-export type Enum<T extends EnumValue = EnumValue> = Record<string, T>
+export type Enum<E, T extends EnumValue<E> = EnumValue<E>> = Record<string, T>
 
 // io
 export interface DataTransferObject {}
