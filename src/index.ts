@@ -57,6 +57,19 @@ export type BitMaskFlag = {
 
 export type BitMaskFlags<T extends BitMaskFlag = BitMaskFlag> = Record<string, T>
 
+export namespace BitMask {
+    export function toString<T extends BitMaskFlag = BitMaskFlag>(value: number, flags: BitMaskFlags<T>): string {
+        const enabled: string[] = []
+        for (const key in flags) {
+            if ((value & flags[key].value) !== 0) {
+                enabled.push(flags[key].name)
+            }
+        }
+
+        return enabled.join(', ')
+    }
+}
+
 export type EnumValue<E> = {
     ordinal: number
     name: string

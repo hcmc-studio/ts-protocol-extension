@@ -17,6 +17,19 @@ export var SortOrder;
         DESC_NULLS_LAST: '내림차순, 값이 존재하지 않을 때 마지막 표시'
     };
 })(SortOrder || (SortOrder = {}));
+export var BitMask;
+(function (BitMask) {
+    function toString(value, flags) {
+        const enabled = [];
+        for (const key in flags) {
+            if ((value & flags[key].value) !== 0) {
+                enabled.push(flags[key].name);
+            }
+        }
+        return enabled.join(', ');
+    }
+    BitMask.toString = toString;
+})(BitMask || (BitMask = {}));
 export var Response;
 (function (Response) {
     let Type;

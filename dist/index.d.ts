@@ -41,6 +41,9 @@ export type BitMaskFlag = {
     name: string;
 };
 export type BitMaskFlags<T extends BitMaskFlag = BitMaskFlag> = Record<string, T>;
+export declare namespace BitMask {
+    function toString<T extends BitMaskFlag = BitMaskFlag>(value: number, flags: BitMaskFlags<T>): string;
+}
 export type EnumValue<E> = {
     ordinal: number;
     name: string;
