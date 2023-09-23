@@ -112,7 +112,7 @@ export declare namespace ListOptionFilter {
         notInList?: string[];
     }
 }
-export interface ListOptionOrder extends DataTransferObject {
+export interface ListOptionOrder extends DataTransferObject, Record<string, SortOrder> {
 }
 export interface Response<T> extends DataTransferObject {
     type: Response.Type;

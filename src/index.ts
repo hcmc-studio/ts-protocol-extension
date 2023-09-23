@@ -139,7 +139,7 @@ export namespace ListOptionFilter {
     }
 }
 
-export interface ListOptionOrder extends DataTransferObject {}
+export interface ListOptionOrder extends DataTransferObject, Record<string, SortOrder> {}
 
 export interface Response<T> extends DataTransferObject {
     type: Response.Type
