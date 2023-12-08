@@ -212,3 +212,5 @@ export namespace Response {
 }
 
 export interface ValueObject extends DataTransferObject {}
+
+export interface VerboseValueObject extends ValueObject {}
