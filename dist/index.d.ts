@@ -4,7 +4,10 @@ export interface Creatable {
 export interface Deletable {
     deletedAt?: Date;
 }
-export interface Modifiable extends Creatable {
+export interface Concealable {
+    concealedAt?: Date;
+}
+export interface Modifiable {
     lastModifiedAt?: Date;
 }
 export interface Id<V> {
