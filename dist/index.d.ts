@@ -55,12 +55,32 @@ export type EnumValue<E> = {
 export type Enum<E extends string | number, T extends EnumValue<E> = EnumValue<E>> = Record<E, T>;
 export interface DataTransferObject {
 }
+export interface RequestDataTransferObject extends DataTransferObject {
+}
+export interface ResponseDataTransferObject extends DataTransferObject {
+}
 export interface EncryptedDataTransferObject extends DataTransferObject {
     publicKey: string;
     body: string;
 }
-export interface ErrorDataTransferObject extends DataTransferObject {
+export interface ErrorDataTransferObject extends ResponseDataTransferObject {
     httpStatusCode: number;
+}
+export interface SerializableThrowable {
+    originalClassName?: string;
+    message?: string;
+    cause?: SerializableThrowable;
+    stackTrace: SerializableStackTraceElement[];
+}
+export interface SerializableStackTraceElement {
+    fileName?: string;
+    lineNumber: number;
+    moduleName?: string;
+    moduleVersion?: string;
+    classLoaderName?: string;
+    className?: string;
+    methodName?: string;
+    isNativeMethod: boolean;
 }
 export interface ListOption<Filter extends ListOptionFilter, Order extends ListOptionOrder> extends DataTransferObject {
     filter: Partial<Filter>;
@@ -142,9 +162,7 @@ export declare namespace Response {
     }
     interface Array<T> extends Response<T[]> {
     }
-    interface Error extends Response<string> {
-        className: string;
-        status: number;
+    interface Error extends Response<SerializableThrowable> {
     }
     function isResponse<T>(o: any): o is Response<T>;
     function isEmpty(o: any): o is Response.Empty;
@@ -152,7 +170,7 @@ export declare namespace Response {
     function isArray<T>(o: any, predicate: (element: any) => boolean): o is Response.Array<T>;
     function isError(o: any): o is Response.Error;
 }
-export interface ValueObject extends DataTransferObject {
+export interface ValueObject extends ResponseDataTransferObject {
 }
 export interface VerboseValueObject extends ValueObject {
 }

@@ -85,13 +85,35 @@ export type Enum<E extends string | number, T extends EnumValue<E> = EnumValue<E
 // io
 export interface DataTransferObject {}
 
+export interface RequestDataTransferObject extends DataTransferObject {}
+
+export interface ResponseDataTransferObject extends DataTransferObject {}
+
 export interface EncryptedDataTransferObject extends DataTransferObject {
     publicKey: string
     body: string
 }
 
-export interface ErrorDataTransferObject extends DataTransferObject {
+export interface ErrorDataTransferObject extends ResponseDataTransferObject {
     httpStatusCode: number
+}
+
+export interface SerializableThrowable {
+    originalClassName?: string
+    message?: string
+    cause?: SerializableThrowable
+    stackTrace: SerializableStackTraceElement[]
+}
+
+export interface SerializableStackTraceElement {
+    fileName?: string
+    lineNumber: number
+    moduleName?: string
+    moduleVersion?: string
+    classLoaderName?: string
+    className?: string
+    methodName?: string
+    isNativeMethod: boolean
 }
 
 export interface ListOption<Filter extends ListOptionFilter, Order extends ListOptionOrder> extends DataTransferObject {
@@ -183,10 +205,7 @@ export namespace Response {
 
     export interface Array<T> extends Response<T[]> {}
 
-    export interface Error extends Response<string> {
-        className: string
-        status: number
-    }
+    export interface Error extends Response<SerializableThrowable> {}
 
     export function isResponse<T>(o: any): o is Response<T> {
         return 'type' in o && 'metadata' in o && 'result' in o
@@ -211,6 +230,6 @@ export namespace Response {
     }
 }
 
-export interface ValueObject extends DataTransferObject {}
+export interface ValueObject extends ResponseDataTransferObject {}
 
 export interface VerboseValueObject extends ValueObject {}
